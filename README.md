@@ -1,2 +1,2 @@
-# personal-website
+# Personal Website
 My new personal website! It's definitely been a minute...
