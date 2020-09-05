@@ -23,7 +23,6 @@ export function AdminBlogDetail(props: Props) {
         const { data }: any = await API.graphql({ query: getBlog, variables: { id: blogId } });
         setBlog(data ? data.getBlog : blankBlog);
     }
-    const markdown = ``;
     return (
         <div>
             <header>

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {API, graphqlOperation} from "aws-amplify";
 import {createBlog} from "../../graphql/mutations";
+import ReactMarkdown from "react-markdown";
 
 export default function AdminCreateBlog() {
     const [title, setTitle] = useState<string>('');
@@ -33,6 +34,10 @@ export default function AdminCreateBlog() {
                 <br/>
                 <button onClick={onCreateBlog}>Submit Blog</button>
             </form>
+            <div>
+                <h1>Preview</h1>
+                <ReactMarkdown source={content} escapeHtml={true} />
+            </div>
         </main>
     </div>;
 
