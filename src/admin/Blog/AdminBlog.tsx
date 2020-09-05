@@ -1,8 +1,9 @@
 import React from "react";
 
 import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
-import CreateBlog from "./CreateBlog";
+import AdminCreateBlog from "./AdminCreateBlog";
 import {AdminBlogList} from "./AdminBlogList";
+import {AdminBlogDetail} from "./AdminBlogDetail";
 
 export default function AdminBlog() {
 
@@ -21,7 +22,13 @@ export default function AdminBlog() {
                 </ul>
             </nav>
             <Switch>
-                <Route path='/admin/blog/create'><CreateBlog/></Route>
+                <Route path='/admin/blog/create'><AdminCreateBlog/></Route>
+                <Route
+                    path="/admin/blog/:blogId"
+                    strict
+                    sensitive
+                    render={({ match }) => match ? <AdminBlogDetail match={match} /> : <>Blog Page Not Found</>}
+                />
                 <Route path='/admin/blog'><AdminBlogList/></Route>
             </Switch>
         </div>

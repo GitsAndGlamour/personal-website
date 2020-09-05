@@ -4,5 +4,5 @@ export interface Blog {
     subtitle: string;
     content: string;
     tags: string[];
-    posted: Date;
+    posted: string;
 }

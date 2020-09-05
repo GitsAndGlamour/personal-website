@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {API} from "aws-amplify";
 import {listBlogs} from "../../graphql/queries";
 import {Blog} from "../../model/blog";
+import {Link} from "react-router-dom";
 
 type Props = {
 
@@ -26,10 +27,9 @@ async function fetchBlogs() {
             <ul>
                 {blogs.map((blog: Blog, index) => {
                     return <li key={index}>
-                        <h4>{blog.title}</h4>
+                        <h4><Link to={`/admin/blog/${blog.id}`}>{blog.title}</Link></h4>
                         <h5>{blog.subtitle}</h5>
                         <p>Posted on <b>{new Date(blog.posted).toDateString()}</b></p>
-                        <p>{blog.content}</p>
                     </li>
                 })}
             </ul>

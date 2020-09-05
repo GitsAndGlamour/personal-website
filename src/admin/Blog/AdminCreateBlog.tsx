@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {API, graphqlOperation} from "aws-amplify";
 import {createBlog} from "../../graphql/mutations";
 
-export default function CreateBlog() {
+export default function AdminCreateBlog() {
     const [title, setTitle] = useState<string>('');
     const [subtitle, setSubtitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
@@ -51,7 +51,7 @@ export default function CreateBlog() {
         setTags(event.target.value.split(/,\s?/));
     }
     async function onCreateBlog(event: React.MouseEvent<HTMLButtonElement>) {
-        const blogDetails = { title, subtitle, content, tags, posted: new Date() };
+        const blogDetails = { title, subtitle, content, tags, posted: new Date().toISOString() };
         const newBlog = await API.graphql(graphqlOperation(createBlog, {input: blogDetails}));
         console.log(newBlog);
     }
