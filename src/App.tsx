@@ -1,9 +1,11 @@
 import React from 'react';
+
 import {
     BrowserRouter as Router,
     Switch,
     Route, Link,
 } from 'react-router-dom'
+import Admin from "./admin/Admin";
 
 function App() {
   return (
@@ -37,7 +39,7 @@ function App() {
               <Route path='/portfolio'><>Portfolio</></Route>
               <Route path='/contact'><>Contact</></Route>
               <Route path='/hire'><>Hire</></Route>
-              <Route path='/admin'><>Admin</></Route>
+              <Route path='/admin'><Admin/></Route>
               <Route path='/'><>Hello World</></Route>
               <Route path='*'><>404 Page Not Found</></Route>
           </Switch>
