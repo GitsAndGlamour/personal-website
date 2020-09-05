@@ -18,9 +18,11 @@ useEffect(() => {
 }, []);
 
 async function fetchBlogs() {
-    const { data }: any = await API.graphql({ query: listBlogs });
+    const {data}: any = await API.graphql({ query: listBlogs });
     setBlogs(data ? data.listBlogs.items : []);
+    console.log(blogs);
 }
+
     return (
         <div>
             <header>Blogs</header>
@@ -30,6 +32,7 @@ async function fetchBlogs() {
                         <h4><Link to={`/admin/blog/${blog.id}`}>{blog.title}</Link></h4>
                         <h5>{blog.subtitle}</h5>
                         <p>Posted on <b>{new Date(blog.posted).toDateString()}</b></p>
+                        <p><b>Tags: </b>{blog.tags.toString().replaceAll(',', ', ')} <Link to={`/admin/blog/form/${blog.id}`}><button>edit</button></Link></p>
                     </li>
                 })}
             </ul>
